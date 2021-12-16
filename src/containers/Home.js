@@ -2,8 +2,8 @@ import React from "react";
 
 const Home = () => {
     return (
-      <div className="ticket">
-        <h3 style={{textAlign: "left", paddingLeft: "50px"}}>"<em>Movies for all"</em></h3>
+      <div className="movie">
+        
         <p
         style={{
           
@@ -21,10 +21,11 @@ const Home = () => {
   
         }}
       >
-        <strong>FlixFix</strong> is an application that helps you keep track of 
+        <h1 style={{textAlign: "center"}}><strong>FlixFix</strong></h1> 
+        <h3 style={{textAlign: "center"}}>"<em>Movies for all"</em></h3>is an application that helps you keep track of 
         your movie queue. It allows you to view movies you've seen in the past and logs shows you have
         planned for the future. 
-        {/* <span className="how-to"> <HowTo /></span> */}
+
       </p> 
 
       </div>
