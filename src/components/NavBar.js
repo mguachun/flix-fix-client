@@ -13,10 +13,24 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink 
+                to='/movie-form'
+                >
+              Track a Movie
+            </NavLink>
+          </li>
+          <li>
             <NavLink
               to='/about'
             >
               About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/how-to'
+            >
+              How To
             </NavLink>
           </li>
         </ul>
