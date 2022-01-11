@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "../StarRating";
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
         planned for the future. 
 
       </p> 
+      {/* <StarRating /> */}
 
       </div>
     );
