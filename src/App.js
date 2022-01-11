@@ -1,59 +1,75 @@
-import React from "react";
-import { Routes, Route} from "react-router-dom";
-import NavBar from "./components/NavBar";
-import './App.css';
+import React from 'react'
+import { Navbar, Nav, Container } from 'react-bootstrap'
+import {
+  BrowserRouter,
+  Routes,
+  Link,
+  Route
+} from "react-router-dom";
 import About from "./containers/About";
 import Home from "./containers/Home";
-import HowTo from "./components/HowTo"
-import MovieForm from "./components/forms/MovieForm"
-import 'bootstrap/dist/css/bootstrap.min.css';
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-  crossorigin="anonymous"
-/>
-// import './custom.scss';
+import HowTo from "./components/HowTo";
+import MovieForm from "./components/forms/MovieForm";
 
 
-
-// function App() {
-class App extends React.Component{
-  constructor() {
-    super();
-    this.state = {
-      movies: []
-    }
-  }
-
-  componentDidMount(){
-    fetch("http://[::1]:3000")
-    .then(resp => resp.json())
-    .then(m => {
-      this.setState({
-        movies: m
-      })
-    })
-    
-  }
-
-render() {
+// FRONTEND USES LOCALHOST3001
+// BACKEND USES LOCALHOST3000
+function App() {
   return (
-    <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movie-form" element={<MovieForm />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/how-to" element={<HowTo />} />
-        
-    </Routes>
+    // <BrowserRouter>
+      <div>
+        <>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <Navbar.Brand as={Link} to="/">FlixFix</Navbar.Brand>
+              <Nav className="me-auto">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/movie-form">Track a Flick</Nav.Link>
+                <Nav.Link as={Link} to="/about">About</Nav.Link>
+                <Nav.Link as={Link} to="/how-to">How To</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
+        </>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="movie-form" element={<MovieForm />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/how-to" element={<HowTo />}/>
+          </Routes>
+        </div>
 
- 
-    </div>
+        </div>
+    // </BrowserRouter>
   );
-}
 }
 
 export default App;
 
+// function App() {
+// class App extends React.Component{
+
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       movies: null
+//     };
+//   }
+
+
+// //   componentDidMount() {
+// //     fetch('localhost:3000/movies')
+// //     .then(response => {
+// //       if (!response.ok) {
+// //         throw new Error(response.statusText)
+// //       }
+// //       return response.json()
+// //     }).catch(err=>{
+// //     console.log(err)
+// // })
+//       // .then(response => response.json())
+//       // .then(data => console.log(data));
+//       // .then(data => this.setState({ movies: data.all }));
+//   // }
