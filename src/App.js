@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import {
-  BrowserRouter,
   Routes,
   Link,
   Route
@@ -11,9 +10,9 @@ import Home from "./containers/Home";
 import HowTo from "./components/HowTo";
 import MovieForm from "./components/forms/MovieForm";
 
-
-// FRONTEND USES LOCALHOST3001
 // BACKEND USES LOCALHOST3000
+// FRONTEND USES LOCALHOST3001
+
 function App() {
   return (
     // <BrowserRouter>
