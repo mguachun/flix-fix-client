@@ -1,28 +1,14 @@
-import React, { useEffect, useState, setLoading } from "react";
-function Home() {
-  const [state, setState] = useState([])
-  const [hasError, setHasError] = useState(false)
-  const { loading, setLoading } = useState(false)
-  useEffect(() => {
-    setLoading(true)
-    fetch("http://localhost:3000/movies").then(
-      res => {
-        setState(res.data);
-        setLoading(false)}
-    ).catch(err => {
-      setHasError(true)
-      setLoading(false)
-    })
-  }, [url])
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+export default function Home() {
+  const [movies, setMovies] = useState([]);
 
-  return (
-    <>
-    {
-      loading ? <div>Loading...</div> : hasError ? <div>Error occured.</div>
-      : (state.map( d => <div>{d}</div>))
-    }
-    </>
-  )
+  const fetchPost = async () => {
+    const response = await axios(
+    "http://localhost:3000/movies"
+    );
+    console.log(response);
+
+  }
+
 }
-
-export default Home;
