@@ -1,69 +1,29 @@
-import React from "react";
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      movies: [] 
-    };
-  }
+import React, { useEffect, useState } from "react";
+const Home = () => {
+ const [movie, setMovie] = useState("");
 
-  componentDidMount() {
-    fetch("http://localhost:3000/movies")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            movies: result.movies
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
-  render() {
-    const { error, isLoaded, movies } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      
-      return (
-        <div className="Home">
-           {this.state.movies.map((movie, key) => {
-            return (
-              <div key={key}>
-                <span>{movie.id}</span>
-                <span>{movie.title}</span>
-                <span>{movie.year}</span>
-              </div>
-            )
-          })}
-        </div>
-  
-      );
-    }
-  }
+ useEffect(() => {
+   const url = "http://localhost:3000/movies";
 
-}
-
-
-   {/* this.props.movies.map(movie => (
-            <li key={movie.id}>
-              {movie.title} {movie.year}
-            </li>
-          ) */}
-        
-        {/* // return this.props.banks.map((bank) => <div className="bank-list-data">
-        // <ol>
-        //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰 */}
-
+   const fetchData = async () => {
+     try {
+       const response = await fetch(url);
+       const json = await response.json();
+       console.log(json.movie);
+       setMovie(json.movie);
+     } catch (error) {
+       console.log("error", error);
+     }
+   };
+   
+   fetchData();
+ }, []);
+ return (
+   <div>
+    <h1>Fetch Data from an API</h1>
+    <h2>{movie}</h2>
+   </div>
+);
+};
 
 export default Home;
