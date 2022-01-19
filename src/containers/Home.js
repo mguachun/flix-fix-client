@@ -44,19 +44,18 @@ class Home extends React.Component {
     } else {
       
       return (
-        <div>
-          this.props.movies.map(movie => (
-            <li key={movie.id}>
-              {movie.title} {movie.year}
-            </li>
-          ))
+        <div className="Home">
+           {this.state.movies.map((movie, key) => {
+            return (
+              <div key={key}>
+                <span>{movie.id}</span>
+                <span>{movie.title}</span>
+                <span>{movie.year}</span>
+              </div>
+            )
+          })}
         </div>
-         // return this.props.movies.map((bank) => <div className="bank-list-data">
-        // <ol>
-        //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰
-        // return this.props.banks.map((bank) => <div className="bank-list-data">
-        // <ol>
-        //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰
+  
       );
     }
   }
@@ -64,7 +63,15 @@ class Home extends React.Component {
 }
 
 
-
+   {/* this.props.movies.map(movie => (
+            <li key={movie.id}>
+              {movie.title} {movie.year}
+            </li>
+          ) */}
+        
+        {/* // return this.props.banks.map((bank) => <div className="bank-list-data">
+        // <ol>
+        //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰 */}
 
 
 export default Home;
