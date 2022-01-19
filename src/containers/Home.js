@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
-const Home = () => {
- const [movie, setMovie] = useState("");
+import React, { useEffect, useState, setLoading } from "react";
+function Home() {
+  const [state, setState] = useState([])
+  const [hasError, setHasError] = useState(false)
+  const { loading, setLoading } = useState(false)
+  useEffect(() => {
+    setLoading(true)
+    fetch("http://localhost:3000/movies").then(
+      res => {
+        setState(res.data);
+        setLoading(false)}
+    ).catch(err => {
+      setHasError(true)
+      setLoading(false)
+    })
+  }, [url])
 
- useEffect(() => {
-   const url = "http://localhost:3000/movies";
-
-   const fetchData = async () => {
-     try {
-       const response = await fetch(url);
-       const json = await response.json();
-       console.log(json.movie);
-       setMovie(json.movie);
-     } catch (error) {
-       console.log("error", error);
-     }
-   };
-   
-   fetchData();
- }, []);
- return (
-   <div>
-    <h1>Fetch Data from an API</h1>
-    <h2>{movie}</h2>
-   </div>
-);
-};
+  return (
+    <>
+    {
+      loading ? <div>Loading...</div> : hasError ? <div>Error occured.</div>
+      : (state.map( d => <div>{d}</div>))
+    }
+    </>
+  )
+}
 
 export default Home;
