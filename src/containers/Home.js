@@ -44,13 +44,16 @@ class Home extends React.Component {
     } else {
       
       return (
-        <li>
-          {this.props.movies.map(movie => (
+        <div>
+          this.props.movies.map(movie => (
             <li key={movie.id}>
               {movie.title} {movie.year}
             </li>
-          ))}
-        </li>
+          ))
+        </div>
+         // return this.props.movies.map((bank) => <div className="bank-list-data">
+        // <ol>
+        //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰
         // return this.props.banks.map((bank) => <div className="bank-list-data">
         // <ol>
         //  {bank.name} is a {bank.gender} 🐖 with ${bank.fund} 💰
