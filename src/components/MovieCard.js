@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 
 const MovieCard = ({title, year, director, review, genre}) => {
     return (
-        <div>
+        <div className="card">
            
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" />
