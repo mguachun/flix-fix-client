@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MovieCard = ({title, year, image}) => {
+const MovieCard = ({title, year}) => {
     return (
         <div>
             <h2>Title:{title}</h2>
