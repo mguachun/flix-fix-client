@@ -70,3 +70,8 @@ class Home extends React.Component {
 
 
 export default Home; -->
+
+
+MovieCard
+<!-- <h2>Title:{title}</h2>
+<h2>Year:{year}</h2> -->
