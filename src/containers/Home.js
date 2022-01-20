@@ -21,7 +21,7 @@ export default function Home () {
 
     <div>
       <h1>Movies:</h1>
-    {  movies.map( (movie) => <MovieCard title={movie.title} year={movie.year} image={movie.image}/> ) }
+    {  movies.map( (movie) => <MovieCard title={movie.title} year={movie.year}/> ) }
 
     
     </div>
