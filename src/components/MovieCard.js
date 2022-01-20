@@ -5,7 +5,7 @@ const MovieCard = ({title, year}) => {
         <div>
             <h2>Title:{title}</h2>
             <h2>Year:{year}</h2>
-            <h2>Image:{image}</h2>
+            
         </div>
     )
 }
