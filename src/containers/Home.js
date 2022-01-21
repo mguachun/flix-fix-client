@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-// import axios from "axios";
 export default function Home () {
+  
   const [movies, setMovies] = useState([]);
   // const fetchMovies = async () => {
   //   const response = await axios("http://localhost:3000/movies");
