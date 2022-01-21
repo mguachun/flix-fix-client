@@ -1,35 +1,57 @@
 import { Component } from 'react';
-class MovieForm extends Component {
-    state = {
-        title: '',
-        director: '',
-        year: '',
-        stars: '',
-        review: '',
-        genre: ''
-    };
+export default function MovieForm () {
+    const [title, setTitle] = useState("")
+    const [director, setDirector] = useState("")
+    const [year, setYear] = useState("")
+    const [stars, setStars] = useState("")
+    const [review, setReview] = useState("")
+    const [genre, setGenre] = useState("")
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.calue
-        });
-    };
+  
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.title, this.state.director, this.state.year, this.state.stars,
-            this.state.review, this.state.genre);
+        const movieData = {title, director, year, stars, review, genre}
+    
+        fetch("http://localhost:3000/movies", {
+            method: 'POST',
+            body: JSON.stringify(movieData),
+            headers: {
+                Content_Type: "application/json",
+            }
+        })
+    // state = {
+    //     title: '',
+    //     director: '',
+    //     year: '',
+    //     stars: '',
+    //     review: '',
+    //     genre: ''
+    // };
+
+    handleChange = (e) => {
         this.setState({
-            title: '',
-            director: '',
-            year: '',
-            stars: '',
-            review: '',
-            genre: ''
+            [e.target.name]: e.target.value
         });
     };
 
-    render() {
+    // handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(this.state.title, this.state.director, this.state.year, this.state.stars,
+    //         this.state.review, this.state.genre);
+    //     this.setState({
+    //         title: '',
+    //         director: '',
+    //         year: '',
+    //         stars: '',
+    //         review: '',
+    //         genre: ''
+    //     });
+    // };
+
+
+
+
         return (
             <div className="form-container">
                 <form onSubmit={this.handleSubmit}>
@@ -51,7 +73,7 @@ class MovieForm extends Component {
                 <br></br>
                 <div>
                 <label>Review:</label>
-                {/* stars will be a different component */}
+    
                 <input type="text" value={this.state.review} onChange={this.handleChange} name="review"/>
                 </div>
                 <br></br>
@@ -60,12 +82,10 @@ class MovieForm extends Component {
                 <input type="text" value={this.state.genre} onChange={this.handleChange} name="genre"/>
                 </div>
                 <br></br>
-                <input type="submit" value="Add Movie" />
+                <input type="submit" value="Submit" />
 
                 </form>
             </div>
         )
     }
-
 }
-export default MovieForm;
